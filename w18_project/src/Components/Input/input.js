@@ -16,6 +16,7 @@ function Input ({onChange}) {
     value={text}
     placeholder={"add your item text here"}
     onChange= {(e) => setText(e.target.value)}
+    // onChange= {(e) => setText([{id: Math.random(), toDoText: (e.target.value), completed: false}])}
     ></input>
     <button>add item</button>
    </form>

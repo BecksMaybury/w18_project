@@ -1,11 +1,16 @@
 import ListItem from "../ListItems/listItems"
 
 function List ({toDoList, handleDelete}) {
-    return(
+     return(
     <ul>
         {toDoList.map((toDo, i) => (
-        <ListItem key={i} text={toDo} handleDelete={() => handleDelete(i)}/>
-        ))}
+            <ListItem 
+             key={toDo.id} 
+             text={toDo.toDoText} 
+             handleDelete={() => handleDelete(i)}    
+            />
+            ))
+        }
     </ul>
     )
 }

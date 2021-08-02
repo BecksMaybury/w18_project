@@ -24,55 +24,42 @@ function App() {
 useEffect (
   () => {console.log("this is the user ",user)},[user]
 ) 
-
-const [listLength, setListLength] = useState (0);
-const [toDoList, setToDoList] = useState ([]);
-
-useEffect ( () => {
  // GRAB DBASE
  async function getData () {
    let response = await firestore.collection('users').get();
-   const firebaseList = response.docs.map(doc => doc.data());
-   console.log ("This is the firebaseList ",firebaseList);
-   setListLength (firebaseList.length)
-   setToDoList(firebaseList)
-  }
-   getData();},[]
-   )
-   
-  //  getData();
-
+   let docData = response.docs.map(doc => doc.data());
+   console.log ("This is docData ",docData);
+   }
+   getData();
+// const [toDoData] = useCollectionData(docData);
+// console.log("this is docData ", docData);
+//  useEffect(
+//    ()=> {
+//       async function getData() {
+//       const snapshot = await firestore.collection('users').get();
+//       // console.log("snapshot ", snapshot)
+//       docData = snapshot.docs.map(doc => doc.data());
+//       console.log("line 35 docData ", docData);
+//       setToDoList([{docData}]);
+//       // return docData
+//       }
+//     getData();
 //     // setToDoList([{id: 99, completed: false, text: "bollocks"}]);
 //     console.log ("line 40", toDoList)
 //     }, [user]
 //   )
-  // const [toDoList, setToDoList] = useState([{id: Math.random(), toDoText: "test item here", completed: false }]); //instead of test item this needs to be the firestore database
+  const [toDoList, setToDoList] = useState([]); //instead of test item this needs to be the firestore database
   // const toDoListRef = firestore.collection(`users/D7FkuMDdmIjPFXteXivh`) //this doesn't work firestore.collection(`users/${auth.currentUser.uid}/todos`)
   
   // console.log ("this is collection ", toDoListRef);
   
-  // const toDoItem = {id: Math.random(), toDoText: "different stuff", completed: false }
-
   function addItem (text) {
-    const toDoItem = {id: Math.random(), toDoText: text, completed:false}
-    console.log("line 49", toDoItem);
-     setToDoList ([...toDoList, toDoItem])
-     let docId = listLength + 1
-     setListLength(docId);
-     firestore.collection('users').doc(`${docId}`).set(toDoItem)
-    // const toDo = text;
-      // setToDoList ([...toDoList, text])
-    // const toDoItemText = toDoItem.toDoText;
-    // console.log("line 54", toDoItemText)
-    // return toDoItemText
-    }
-    // useEffect( () => {
-       
-    //write to firestore database
-    // DONE generate unique id 
-    //DONE LOOK AT .createId method on firestore (creates an object with unique id)
-
-// addItem()
+  const toDo = {id: Math.random(), toDoText: text, completed: false }
+  setToDoList ([...toDoList, toDo])
+  //write to firestore database
+  // DONE generate unique id 
+  //DONE LOOK AT .createId method on firestore (creates an object with unique id)
+}
 useEffect (
   () => {
     console.log(toDoList);
@@ -81,7 +68,6 @@ useEffect (
 
 function handleDelete (i) {
     setToDoList([...toDoList.slice(0,i), ...toDoList.slice(i + 1)])
-    firestore.collection('users').doc(`${i+1}`).delete();
 }
 
   if (!user) { 
@@ -101,7 +87,6 @@ function handleDelete (i) {
     </header>
     <Input onChange={addItem}/>
     <List toDoList={toDoList} handleDelete={handleDelete}/>
-    {/* <List toDoList={firestore.collection('users').doc} handleDelete={handleDelete}/> */}
     <SignInButton onClick={signOut} user={user}/>
   </div>
   );

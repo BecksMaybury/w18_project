@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// const functions = require('firebase-functions');
 
 ReactDOM.render(
   <React.StrictMode>
