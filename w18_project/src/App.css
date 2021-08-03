@@ -11,12 +11,13 @@
 
 .App-header {
   background-color: #282c34;
-  /* min-height: 100vh; */
+  min-height: 15vh; 
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 6vh;
   color: white;
 }
 
@@ -24,11 +25,54 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+ul {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-align: left;
   }
-  to {
-    transform: rotate(360deg);
-  }
+.list-item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  margin-left: 4vh;
+  padding-top: 2vh;  
+  font-size: 3vh;
+}
+
+.list-item-completed {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  margin-left: 8vh;
+  padding-top: 2vh;  
+  font-size: 4vh;
+  text-decoration:line-through;
+}
+
+form {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: 5vh;
+}
+
+input {
+  margin: 5vh
+}
+
+input-text {
+  /* margin: 5vh */
+  color: teal
+}
+input-date {
+  /* margin: 5vh */
+  color: teal
+}
+
+.sign-in-button {
+  margin-bottom: 5vh;
+  color: red;
 }

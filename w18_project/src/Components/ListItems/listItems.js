@@ -1,7 +1,8 @@
-function ListItem ({text, handleDelete}) {
+function ListItem ({text, date, handleDelete}) {
     return (
-    <li>{text}
-    <button onClick={handleDelete}>delete</button>
+    <li className="list-item">{date} {text}
+    <div><button onClick={handleDelete}>delete</button></div>
+    {/* <div><button onClick={handleCompleted}>done!</button></div> */}
     </li>
     )
 }
