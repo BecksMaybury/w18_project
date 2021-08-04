@@ -8,7 +8,7 @@ import SignInButton from "./Components/SignIn/signIn";
 import firebase from './firebase';
 import {useEffect} from 'react';
 import './App.css';
-import FiveWaysDisplay from "./Components/fiveWaysDisplay/fiveWaysDisplay";
+import FiveWaysNav from "./Components/FiveWaysNav/FiveWaysNav";
 
 function signInWithGoogle () {
   auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
@@ -39,8 +39,8 @@ useEffect ( () => {
    getData();},[]
    )
 
-  function addItem (text, date) {
-    const toDoItem = {id: Date(), toDoText: text, completed:false, date: date}
+  function addItem (text, date, type) {
+    const toDoItem = {id: Date(), toDoText: text, completed:false, date: date, type:type}
     console.log("line 49", toDoItem);
      setToDoList ([...toDoList, toDoItem])
      firestore.collection('users').doc(`${toDoItem.id}`).set(toDoItem)
@@ -59,6 +59,8 @@ function handleDelete (i) {
     firestore.collection('users').doc(`${toDoList[i].id}`).delete();
     
 }
+
+
 
 // function handleCompleted (i) {
 //   // setToDoList([...toDoList(0,i), toDoList[i].completed: true])
@@ -79,7 +81,7 @@ function handleDelete (i) {
   return (
     <div className="App">
       <header className="App-header">
-      Firebase To Do List
+      My 5 Ways to Wellbeing
     <SignInButton onClick={signInWithGoogle} user={null}/>
       </header>
     </div>
@@ -88,10 +90,11 @@ function handleDelete (i) {
   return (
     <div className="App">
     <header className="App-header">
-    Firebase To Do List - {user.bc.displayName}
+    My 5 Ways to Wellbeing - {user.bc.displayName}
     <SignInButton className="sign-in-button" onClick={signOut} user={user}/>
     </header>
-    <FiveWaysDisplay/>
+    <FiveWaysNav/>
+    {/* <FiveWaysDisplay way={way}/> */}
     <Input onChange={addItem}/>
     <List toDoList={toDoList} handleDelete={handleDelete}/>
   </div>

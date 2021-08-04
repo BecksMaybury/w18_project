@@ -1,8 +1,10 @@
 export const fiveWaysArray = [
+    {type: "welcome",
+     text: "get started with the 5 ways to wellbeing.  log your progress!"},
     {type: "connect",
-     text: "find ways to reach out to others"},
+     text: "say hi to somebody"},
      {type: "be active",
-     text: "do some physical stuff"},
+     text: "get moving"},
      {type: "keep learning",
      text: "learn some shit"},
      {type: "take notice",

@@ -6,7 +6,9 @@ function List ({toDoList, handleDelete}) {
         {toDoList.map((toDo, i) => (
             <ListItem 
              key={toDo.id} 
-             text={`${toDo.date}: \t ${toDo.toDoText}`} 
+             date={`${toDo.date}`}
+             text={`${toDo.toDoText}`} 
+             type={`${toDo.type}`}
              handleDelete={() => handleDelete(i)}
             />
             ))
