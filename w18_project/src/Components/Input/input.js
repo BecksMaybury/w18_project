@@ -1,4 +1,5 @@
 import {useState} from "react"
+import check from "../../images/check.png"
 
 function Input ({onChange}) {
     // const {onChange} = props
@@ -13,17 +14,17 @@ function Input ({onChange}) {
     }
 
     return (
-   <form onSubmit={handleSubmit}>
+   <form  onSubmit={handleSubmit}>
+   <span className="input-text">Add your log here:</span>
    <input 
-    className={"input-date"}
+    className={"input"}
      type={"date"}
      placeholder ={"dd-mm-yyyy"}
      onChange= {(e) => setDate(e.target.value)}
      required
    />
    <select
-   
-    className={"input-type"}
+    className={"input"}
     onChange= {(e) => setType(e.target.value)}
     required
     >
@@ -35,13 +36,13 @@ function Input ({onChange}) {
     <option value="give">I gave</option>
    </select>
     <input 
-     className={"input-text"}
+     className={"input"}
      value={text}
      placeholder={"add your item text here"}
      onChange= {(e) => setText(e.target.value)}
     // onChange= {(e) => setText([{id: Math.random(), toDoText: (e.target.value), completed: false}])}
     ></input>
-    <button>add item</button>
+    <submit className= "add-item"><img onClick={handleSubmit} className="add-item-image" src={check} alt="add log"/></submit>
    </form>
     )
 }

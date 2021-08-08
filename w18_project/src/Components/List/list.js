@@ -2,6 +2,7 @@ import ListItem from "../ListItems/listItems"
 
 function List ({toDoList, handleDelete}) {
      return(
+    <div className = "list-scroll">
     <ul>
         {toDoList.map((toDo, i) => (
             <ListItem 
@@ -14,7 +15,9 @@ function List ({toDoList, handleDelete}) {
             ))
         }
     </ul>
+    </div>
     )
 }
 
 export default List
+
